@@ -31,5 +31,13 @@ export default {
       selectedTab: 'login',
     };
   },
+  watch: {
+    selectedTab: {
+      async handler(value) {
+        this.$emit('selected-tab', value);
+      },
+      immediate: true,
+    },
+  },
 };
 </script>
