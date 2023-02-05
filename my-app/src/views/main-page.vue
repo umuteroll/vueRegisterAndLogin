@@ -6,16 +6,12 @@
   </div>
 </template>
 <script>
-import Form from '../components/Form.vue';
-import Dialog from '../components/Dialog.vue';
 import { mapActions, mapGetters } from 'vuex';
 import {
   GET_SIGN_USER, FETCH_SIGN_USER, GET_SIGN_USER_REQUEST, FETCH_SIGN_USER_REQUEST,
 } from '../store/constants';
 export default {
   components: {
-    Form,
-    Dialog,
   },
   data() {
     return {

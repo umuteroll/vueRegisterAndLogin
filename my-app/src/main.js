@@ -1,9 +1,20 @@
+/* eslint-disable vue/multi-word-component-names */
 import { createApp } from 'vue';
 import App from './App.vue';
 import { router } from './router';
 import './assets/css/app.css';
 import store from './store';
+import SwitchHeaderTab from '../src/components/BaseComponents/SwitchHeaderTab';
+import FormInput from '../src/components/BaseComponents/FormInput.vue';
+import FormButton from '../src/components/BaseComponents/FormButton.vue';
+import Form from '../src/components/Form.vue';
+import Dialog from '../src/components/Dialog.vue';
 const app = createApp(App);
+app.component('SwitchHeaderTab', SwitchHeaderTab);
+app.component('FormInput', FormInput);
+app.component('FormButton', FormButton);
+app.component('Form', Form);
+app.component('Dialog', Dialog);
 app.use(store);
 app.use(router);
 app.mount('#app');

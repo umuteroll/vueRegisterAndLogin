@@ -9,18 +9,12 @@
   </div>
 </template>
 <script>
-import SwitchHeaderTab from './BaseComponents/SwitchHeaderTab.vue';
-import FormInput from './BaseComponents/FormInput.vue';
-import FormButton from './BaseComponents/FormButton.vue';
 import { mapActions, mapGetters } from 'vuex';
 import {
   GET_SIGN_USER_REQUEST, FETCH_SIGN_USER_REQUEST,
 } from '../store/constants';
 export default {
   components: {
-    SwitchHeaderTab,
-    FormInput,
-    FormButton,
   },
   data() {
     return {
