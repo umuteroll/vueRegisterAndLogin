@@ -1,15 +1,15 @@
-import { signApiClient } from '../api/signapi/index.js';
+import signApiClient from '../api/signapi/index.js';
 export default {
   async getUserInfoByEmail(param) {
-    const { data: { data } } = await signApiClient.get(
+    const data = await signApiClient.get(
       `/users?email=${param}`,
     );
-    return data;
+    return data.data;
   },
   async createUser(param) {
-    const { data: { data } } = await signApiClient.post(
-      '/user', param,
+    const data = await signApiClient.post(
+      '/users', param,
     );
-    return data;
+    return data.data;
   },
 };
