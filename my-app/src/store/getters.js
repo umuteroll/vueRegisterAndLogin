@@ -1,4 +1,4 @@
-import { SIGN_USER, GET_SIGN_USER } from './sing.constants';
+import { SIGN_USER, GET_SIGN_USER } from './constants';
 export default {
   [GET_SIGN_USER]: (state) => state[SIGN_USER],
 };

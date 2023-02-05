@@ -1,8 +1,8 @@
 import {
   SET_SIGN_USER,
   FETCH_SIGN_USER,
-} from './sign.constants';
-import signService from '~/services/sign.service';
+} from './constants';
+import signService from '../services/signService';
 export default {
   async [SET_SIGN_USER]({ commit }, param) {
     const response = await signService.getUserInfoByEmail(param);
