@@ -2,9 +2,9 @@
 <template>
   <div class="rounded w-[50.875rem] shadow-lg bg-[#1C1F27]">
     <SwitchHeaderTab @selected-tab='selectedTabHandler'></SwitchHeaderTab>
-    <FormInput v-if="selectedTab === 'register'" v-model='signRequest.nameSurname' :holder="'Adınız Soyadınız'"></FormInput>
-    <FormInput v-model="signRequest.email" :holder="'E- Posta Adresiniz'"></FormInput>
-    <FormInput v-model="signRequest.password" :holder="'Parolanız'"></FormInput>
+    <FormInput v-if="selectedTab === 'register'" v-model='signRequest.nameSurname' :type="'text'" :holder="'Adınız Soyadınız'"></FormInput>
+    <FormInput v-model="signRequest.email" :type="'text'" :holder="'E- Posta Adresiniz'"></FormInput>
+    <FormInput v-model="signRequest.password" :type="'password'" :holder="'Parolanız'"></FormInput>
     <FormButton :selectedTab='selectedTab' @click="setRequestTheState"></FormButton>
   </div>
 </template>
