@@ -40,6 +40,11 @@ export default {
     }),
     selectedTabHandler(data) {
       this.selectedTab = data;
+      this.fetchSignUserRequest({
+        nameSurname: '',
+        email: '',
+        password: '',
+      });
     },
     setRequestTheState() {
       this.fetchSignUserRequest(this.signRequest);
