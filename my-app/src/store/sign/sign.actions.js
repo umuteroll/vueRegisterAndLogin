@@ -5,7 +5,11 @@ import {
 import signService from '~/services/sign.service';
 export default {
   async [SET_SIGN_USER]({ commit }, param) {
-    const sellerNoticeDetail = await signService.getUserInfoByEmail(param);
-    commit(FETCH_SIGN_USER, sellerNoticeDetail);
+    const response = await signService.getUserInfoByEmail(param);
+    commit(FETCH_SIGN_USER, response);
+  },
+  async [SET_SIGN_USER]({ commit }, param) {
+    const response = await signService.createUser(param);
+    commit(FETCH_SIGN_USER, response);
   },
 };
