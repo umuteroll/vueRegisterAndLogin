@@ -74,6 +74,7 @@ export default {
     checkPasswordIsTrue() {
       if (this.getSignUser.length !== 1) {
         this.showDialogHandler('Böyle bir mail adresi yok!');
+        return;
       }
       if (this.signRequest.password === this.getSignUser[0].password) {
         this.fetchSignRequest();

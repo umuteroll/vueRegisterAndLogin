@@ -4,7 +4,8 @@ export default {
     const data = await signApiClient.get(
       `/users?email=${param}`,
     );
-    return data.data;
+    const filteredData = data.data.filter(user => user.email === param);
+    return filteredData;
   },
   async createUser(param) {
     const data = await signApiClient.post(
