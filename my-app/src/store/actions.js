@@ -6,14 +6,14 @@ import {
 } from './constants';
 import signService from '../services/signService';
 export default {
-  async [FETCH_SIGN_USER]({ commit }, { data, type }) {
+  async [FETCH_SIGN_USER]({ commit }, param) {
     let response;
-    if (type === 'GET') {
-      response = await signService.getUserInfoByEmail(data.email);
+    if (param.type === 'GET') {
+      response = await signService.getUserInfoByEmail(param.data.email);
     }
     else {
-      delete data['type'];
-      response = await signService.createUser(data);
+      delete param.data['type'];
+      response = await signService.createUser(param.data);
     }
     commit(SET_SIGN_USER, response);
   },
