@@ -2,7 +2,7 @@
 <template>
   <div class="h-screen w-screen bg-[#2E323E] flex justify-center items-center">
     <Form @request='signUpOrSignIn'></Form>
-    <Dialog :showDialog="showDialog" @close="closeDialog"></Dialog>
+    <Dialog :showDialog="showDialog" :message="dialogMessage" @close="closeDialog"></Dialog>
   </div>
 </template>
 <script>
@@ -21,6 +21,7 @@ export default {
     return {
       type: '',
       showDialog: false,
+      dialogMessage: '',
     };
   },
   computed: {
@@ -50,17 +51,17 @@ export default {
           this.fetchSignRequest();
         }
       } catch (err) {
-        console.log(err);
-      }
+        this.dialogMessage = err;
+        this.showDialog = true; }
     },
     validataFields() {
       if (!this.signRequest.email || !this.signRequest.password) {
-        alert('Tüm alanları doldurunuz.');
+        this.showDialogHandler('Tüm alanları doldurunuz');
         return;
       }
       if (this.type === 'register') {
         if (!this.signRequest.nameSurname) {
-          alert('Tüm alanları doldurunuz.');
+          this.showDialogHandler('Tüm alanları doldurunuz');
           return;
         }
       }
@@ -71,11 +72,14 @@ export default {
       this.callSignUser(requestObj);
     },
     checkPasswordIsTrue() {
+      if (this.getSignUser.length !== 1) {
+        this.showDialogHandler('Böyle bir mail adresi yok!');
+      }
       if (this.signRequest.password === this.getSignUser[0].password) {
         this.fetchSignRequest();
         this.$router.push({ path: '/succes' });
       } else {
-        this.showDialog = true;
+        this.showDialogHandler('Yanlış parola girdiniz!');
       }
     },
     fetchSignRequest() {
@@ -84,6 +88,10 @@ export default {
         email: '',
         password: '',
       });
+    },
+    showDialogHandler(text) {
+      this.dialogMessage = text;
+      this.showDialog = true;
     },
     closeDialog() {
       this.showDialog = false;
