@@ -36,19 +36,14 @@ export default {
       fetchSignUser: FETCH_SIGN_USER,
       fetchSignUserRequest: FETCH_SIGN_USER_REQUEST,
     }),
-    signUpOrSignIn() {
-      if (this.signRequest.nameSurname !== '' || !('nameSurname' in this.signRequest)) {
-        this.type = 'POST';
-      }
-      else {
-        this.type = 'GET';
-      }
+    signUpOrSignIn(data) {
+      this.type = data;
       this.validataFields();
     },
-    async callSignUser(requetObj) {
+    async callSignUser(requestObj) {
       try {
-        await this.fetchSignUser(requetObj);
-        if (requetObj.type === 'GET') {
+        await this.fetchSignUser(requestObj);
+        if (this.type === 'login') {
           this.checkPasswordIsTrue();
         } else {
           this.$router.push({ path: '/succes' });
@@ -59,20 +54,20 @@ export default {
       }
     },
     validataFields() {
-      const requestObj = {
-        data: this.signRequest,
-        type: this.type,
-      };
-      if (!requestObj.data.email || !requestObj.data.password) {
+      if (!this.signRequest.email || !this.signRequest.password) {
         alert('Tüm alanları doldurunuz.');
         return;
       }
-      if (requestObj.type === 'POST') {
-        if (!requestObj.data.nameSurname) {
+      if (this.type === 'register') {
+        if (!this.signRequest.nameSurname) {
           alert('Tüm alanları doldurunuz.');
           return;
         }
       }
+      const requestObj = {
+        data: this.signRequest,
+        type: this.type,
+      };
       this.callSignUser(requestObj);
     },
     checkPasswordIsTrue() {

@@ -48,7 +48,7 @@ export default {
     },
     setRequestTheState() {
       this.fetchSignUserRequest(this.signRequest);
-      this.$emit('request');
+      this.$emit('request', this.selectedTab);
     },
   },
 };

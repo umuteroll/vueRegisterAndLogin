@@ -8,7 +8,7 @@ import signService from '../services/signService';
 export default {
   async [FETCH_SIGN_USER]({ commit }, param) {
     let response;
-    if (param.type === 'GET') {
+    if (param.type === 'login') {
       response = await signService.getUserInfoByEmail(param.data.email);
     }
     else {
