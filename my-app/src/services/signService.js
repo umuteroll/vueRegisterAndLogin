@@ -10,8 +10,7 @@ export default {
   async createUser(param) {
     const user = await this.getUserInfoByEmail(param.email);
     if (user.length) {
-      alert('Bu üyeye ait mail zaten var!');
-      return;
+      return false;
     }
     const data = await signApiClient.post(
       '/users', param,

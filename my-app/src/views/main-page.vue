@@ -40,6 +40,10 @@ export default {
     async callSignUser(requestObj) {
       try {
         await this.fetchSignUser(requestObj);
+        if (!this.getSignUser) {
+          this.showDialogHandler('Bu üyeye ait mail zaten var!');
+          return;
+        }
         if (this.type === 'login') {
           this.checkPasswordIsTrue();
         } else {
