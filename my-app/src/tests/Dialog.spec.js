@@ -15,7 +15,7 @@ describe('Dialog', () => {
   });
   it('renders dialog with correct message', () => {
     const messageElement = wrapper.find('p');
-    expect(messageElement.text()).toBe('bunu yazz');
+    expect(messageElement.text()).toBe('Merhaba Dünya!');
   });
   it('emits when close button clicked', () => {
     const closeButton = wrapper.find('button');

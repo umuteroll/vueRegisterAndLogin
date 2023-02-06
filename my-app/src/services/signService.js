@@ -8,6 +8,11 @@ export default {
     return filteredData;
   },
   async createUser(param) {
+    const user = await this.getUserInfoByEmail(param.email);
+    if (user.length) {
+      alert('Bu üyeye ait mail zaten var!');
+      return;
+    }
     const data = await signApiClient.post(
       '/users', param,
     );
